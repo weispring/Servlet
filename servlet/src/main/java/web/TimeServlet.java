@@ -6,11 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(name = "time",urlPatterns = {"/ts"})
 public class TimeServlet extends HttpServlet {
 
 	/**
@@ -20,6 +23,15 @@ public class TimeServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		ServletContext context = this.getServletContext();
+
+		context.setAttribute("testContextAttribute", "1");
+		context.setAttribute("testContextAttribute", "2");
+		context.removeAttribute("testContextAttribute");
+
+
+
+
 		//1.使用request读取请求数据
 		//1.1读取请求行
 		System.out.println("请求方式" + req.getMethod());

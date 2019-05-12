@@ -9,21 +9,53 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <!-- 1.声明Servlet，并给它取一个别名。
-  		这个别名只能在此文件内使用。 -->
+  <!--
+  &lt;!&ndash; 1.声明Servlet，并给它取一个别名。
+  		这个别名只能在此文件内使用。 &ndash;&gt;
   <servlet>
   	 <servlet-name>time</servlet-name>
   	 <servlet-class>web.TimeServlet</servlet-class>
   </servlet>
   
-  <!-- 2.给这个Servlet注册一个访问路径(网名) -->
+  &lt;!&ndash; 2.给这个Servlet注册一个访问路径(网名) &ndash;&gt;
   <servlet-mapping>
   	 <servlet-name>time</servlet-name>
-  	 <!-- 访问路径须以/开头 -->
+  	 &lt;!&ndash; 访问路径须以/开头 &ndash;&gt;
   	 <url-pattern>/ts</url-pattern>
-  </servlet-mapping>
-  
+  </servlet-mapping>-->
+
+    <!-- 过滤器声明 -->
+    <filter>
+        <filter-name>CountFilter</filter-name>
+        <filter-class>web.CountFilter</filter-class>
+        <init-param>
+            <param-name>count</param-name>
+            <param-value>5000</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CountFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>interceptor</filter-name>
+        <filter-class>web.UserFiter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>interceptor</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>web.listener.ListenerObject</listener-class>
+    </listener>
+
+ <!--   <listener>
+        <listener-class>web.listener.ListenerAttribute</listener-class>
+    </listener>-->
+
+
 </web-app>
 
 
