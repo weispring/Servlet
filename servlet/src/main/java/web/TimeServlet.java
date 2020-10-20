@@ -62,7 +62,12 @@ public class TimeServlet extends HttpServlet {
 		out.println("</html>");
 		out.close();
 	}
-	
+
+	public static void main(String[] args) {
+		int maxTimedSpins = (4 < 2) ? 0 : 32;
+
+		System.out.println(maxTimedSpins);
+	}
 }
 
 
